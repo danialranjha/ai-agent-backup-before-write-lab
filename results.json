@@ -1,0 +1,267 @@
+{
+  "scope": "Offline extracted source, synthetic database callbacks and bytes; no live model or SQLCipher",
+  "scenario_pairs": 8,
+  "rows": [
+    {
+      "case": "running_default",
+      "mode": "before",
+      "events": [
+        "open",
+        "remove:one",
+        "remove:two",
+        "commit",
+        "emit"
+      ],
+      "remaining_songs": [],
+      "error": null,
+      "final_bytes": "fixture-after",
+      "backups": {}
+    },
+    {
+      "case": "running_default",
+      "mode": "after",
+      "events": [
+        "open"
+      ],
+      "remaining_songs": [
+        "one",
+        "two"
+      ],
+      "error": "ClickException: Refusing to clear playlist 'demo' while Rekordbox is running. Close Rekordbox first, or rerun with --force to acknowledge the risk. Forced writes still create a backup.",
+      "final_bytes": "fixture-before",
+      "backups": {}
+    },
+    {
+      "case": "running_forced_backup",
+      "mode": "before",
+      "events": [
+        "open",
+        "remove:one",
+        "remove:two",
+        "commit",
+        "emit"
+      ],
+      "remaining_songs": [],
+      "error": null,
+      "final_bytes": "fixture-after",
+      "backups": {}
+    },
+    {
+      "case": "running_forced_backup",
+      "mode": "after",
+      "events": [
+        "open",
+        "open",
+        "copy_attempt:master.db",
+        "copied:master.db",
+        "remove:one",
+        "remove:two",
+        "commit",
+        "emit"
+      ],
+      "remaining_songs": [],
+      "error": null,
+      "final_bytes": "fixture-after",
+      "backups": {
+        "master.db.FIXED.bak": "fixture-before"
+      }
+    },
+    {
+      "case": "running_forced_no_backup",
+      "mode": "before",
+      "events": [
+        "open",
+        "remove:one",
+        "remove:two",
+        "commit",
+        "emit"
+      ],
+      "remaining_songs": [],
+      "error": null,
+      "final_bytes": "fixture-after",
+      "backups": {}
+    },
+    {
+      "case": "running_forced_no_backup",
+      "mode": "after",
+      "events": [
+        "open"
+      ],
+      "remaining_songs": [
+        "one",
+        "two"
+      ],
+      "error": "ClickException: Refusing forced write while Rekordbox is running without a backup",
+      "final_bytes": "fixture-before",
+      "backups": {}
+    },
+    {
+      "case": "closed_default",
+      "mode": "before",
+      "events": [
+        "open",
+        "remove:one",
+        "remove:two",
+        "commit",
+        "emit"
+      ],
+      "remaining_songs": [],
+      "error": null,
+      "final_bytes": "fixture-after",
+      "backups": {}
+    },
+    {
+      "case": "closed_default",
+      "mode": "after",
+      "events": [
+        "open",
+        "open",
+        "copy_attempt:master.db",
+        "copied:master.db",
+        "remove:one",
+        "remove:two",
+        "commit",
+        "emit"
+      ],
+      "remaining_songs": [],
+      "error": null,
+      "final_bytes": "fixture-after",
+      "backups": {
+        "master.db.FIXED.bak": "fixture-before"
+      }
+    },
+    {
+      "case": "closed_no_backup",
+      "mode": "before",
+      "events": [
+        "open",
+        "remove:one",
+        "remove:two",
+        "commit",
+        "emit"
+      ],
+      "remaining_songs": [],
+      "error": null,
+      "final_bytes": "fixture-after",
+      "backups": {}
+    },
+    {
+      "case": "closed_no_backup",
+      "mode": "after",
+      "events": [
+        "open",
+        "open",
+        "remove:one",
+        "remove:two",
+        "commit",
+        "emit"
+      ],
+      "remaining_songs": [],
+      "error": null,
+      "final_bytes": "fixture-after",
+      "backups": {}
+    },
+    {
+      "case": "copy_failure",
+      "mode": "before",
+      "events": [
+        "open",
+        "remove:one",
+        "remove:two",
+        "commit",
+        "emit"
+      ],
+      "remaining_songs": [],
+      "error": null,
+      "final_bytes": "fixture-after",
+      "backups": {}
+    },
+    {
+      "case": "copy_failure",
+      "mode": "after",
+      "events": [
+        "open",
+        "open",
+        "copy_attempt:master.db"
+      ],
+      "remaining_songs": [
+        "one",
+        "two"
+      ],
+      "error": "OSError: injected copy failure",
+      "final_bytes": "fixture-before",
+      "backups": {}
+    },
+    {
+      "case": "missing_database",
+      "mode": "before",
+      "events": [
+        "open",
+        "remove:one",
+        "remove:two",
+        "commit",
+        "emit"
+      ],
+      "remaining_songs": [],
+      "error": null,
+      "final_bytes": "fixture-after",
+      "backups": {}
+    },
+    {
+      "case": "missing_database",
+      "mode": "after",
+      "events": [
+        "open",
+        "open"
+      ],
+      "remaining_songs": [
+        "one",
+        "two"
+      ],
+      "error": "ClickException: Cannot back up missing database: <fixture>/master.db",
+      "final_bytes": null,
+      "backups": {}
+    },
+    {
+      "case": "sidecars",
+      "mode": "before",
+      "events": [
+        "open",
+        "remove:one",
+        "remove:two",
+        "commit",
+        "emit"
+      ],
+      "remaining_songs": [],
+      "error": null,
+      "final_bytes": "fixture-after",
+      "backups": {}
+    },
+    {
+      "case": "sidecars",
+      "mode": "after",
+      "events": [
+        "open",
+        "open",
+        "copy_attempt:master.db",
+        "copied:master.db",
+        "copy_attempt:master.db-wal",
+        "copied:master.db-wal",
+        "copy_attempt:master.db-shm",
+        "copied:master.db-shm",
+        "remove:one",
+        "remove:two",
+        "commit",
+        "emit"
+      ],
+      "remaining_songs": [],
+      "error": null,
+      "final_bytes": "fixture-after",
+      "backups": {
+        "master.db-shm.FIXED.bak": "fixture-shm",
+        "master.db-wal.FIXED.bak": "fixture-wal",
+        "master.db.FIXED.bak": "fixture-before"
+      }
+    }
+  ]
+}

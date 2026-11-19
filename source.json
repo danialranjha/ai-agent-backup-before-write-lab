@@ -1,0 +1,19 @@
+{
+  "before": {
+    "url": "https://github.com/HKUDS/CLI-Anything/blob/1dd4b4e40b387add8504156c7843c5a41ae7e69b/rekordbox/agent-harness/cli_anything/rekordbox/rekordbox_cli.py",
+    "blob": "c8f1d6cbe8fbf0f68a737d0ef6ccdb208e141463",
+    "functions": {
+      "playlist_clear": "48f3e6d2a4718047c7e9a7508049995da853db5812102815f816d389f47521b8"
+    }
+  },
+  "after": {
+    "url": "https://github.com/HKUDS/CLI-Anything/blob/5ceeb4b2e6ca4217c048fd7872897aaf63e9572e/rekordbox/agent-harness/cli_anything/rekordbox/rekordbox_cli.py",
+    "blob": "1c6587d2739fc93b6f4c1ac41570922c31be38c9",
+    "functions": {
+      "_db_path": "05d9075e0acb041dafc4d85d766678cc52433cd25784f0dda2217b102c09a953",
+      "_backup_database": "5de0806002fd14ae9864e9c315109d178954bb63e4e8f366d9c70f0818e0a7f2",
+      "_open_db_for_write": "6387ee0448e1568f1cf8bbfba32853e15e66b58a94deab922e60731e00b51588",
+      "playlist_clear": "f7f344312dd10179b3904c2c333aaee2004b62bdc0771894e3fe8b35776e3526"
+    }
+  }
+}
